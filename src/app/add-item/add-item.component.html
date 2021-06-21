@@ -1,0 +1,12 @@
+<div class="add-item">
+	<input 
+		type="text" 
+		class="add-item__input" 
+		(keydown.enter)="addNewItem(newItem)" 
+		[(ngModel)]="newItem">
+	<button 
+		class="add-item__button" 
+		(click)="addNewItem(newItem)" 
+		[disabled]="newItem === undefined || newItem === ''"
+	>+</button>
+</div>

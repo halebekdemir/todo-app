@@ -1,0 +1,71 @@
+@import '../../assets/_variables.scss';
+
+:host {
+	display: grid;
+	grid-template-rows:inherit;
+	row-gap: 4px;
+}
+
+.list-item {
+	position: relative;
+	display: grid;
+	grid-template-columns: 1fr auto;
+	justify-self: stretch;
+	align-self: flex-start;
+	padding: 8px;
+	background-color: $lilac-luster;
+	border-radius: 8px;
+
+	&__desc {
+		align-self: center;
+		justify-self: flex-start;
+		font-size: 14px;
+		word-break: break-word;
+	}
+
+	&__delete {
+		height: 30px;
+		border: none;
+		border-radius: 4px;
+		background-color: $columbia-blue;
+		cursor: pointer;
+		transition: background-color .3s;
+
+		&:hover {
+			background-color: darken($columbia-blue, 7%);
+		}
+	}
+
+	&__menu {
+		position: absolute;
+		right: 7px;
+    top: 38px;
+    z-index: 1;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+		padding: 8px;
+    background-color: $cultured;
+    border-radius: 4px;
+		box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+
+		&.-open {
+			display: flex;
+		}
+
+		&__button {
+			padding: 4px;
+	    border-radius: 4px;
+			border: none;
+			background-color: transparent;
+			text-align: left;	
+			cursor: pointer;
+			transition: background-color .2s;
+
+			&:hover {
+				background-color: #dbe1e5ff;
+			}
+		}
+	}
+}

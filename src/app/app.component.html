@@ -1,0 +1,34 @@
+<div class="wrapper">
+  <header class="header">
+    Todo List
+  </header>
+  <div class="main">
+    <!-- to do part -->
+    <div class="main__part">
+      <div class="main__part__tab">To do</div>
+      <app-add-item (addedItem)="addTodo($event)"></app-add-item>
+      <div class="main__part__content">
+      <app-listed-item [listItems]="todoArray" [itemType]="itemType.todo" (changedItem)="changeTodoItem($event)"></app-listed-item>
+      </div>
+    </div>
+    <!-- doing part -->
+    <div class="main__part">
+      <div class="main__part__tab">In progress</div>
+      <app-add-item (addedItem)="addDoing($event)"></app-add-item>
+      <div class="main__part__content">
+        <app-listed-item [listItems]="inProgressArray" [itemType]="itemType.inProgress" (changedItem)="changeTodoItem($event)"></app-listed-item>
+      </div>
+    </div>
+    <!-- completed part -->
+    <div class="main__part">
+      <div class="main__part__tab">Completed</div>
+      <app-add-item (addedItem)="addCompleted($event)"></app-add-item>
+      <div class="main__part__content">
+        <app-listed-item [listItems]="completedArray" [itemType]="itemType.completed" (changedItem)="changeTodoItem($event)"></app-listed-item>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    footer
+  </footer>
+</div>

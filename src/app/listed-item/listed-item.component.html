@@ -1,0 +1,22 @@
+<div class="list-item" *ngFor="let item of listItems;index as i">
+	<span class="list-item__desc">{{item}}</span>
+	<button class="list-item__delete" (click)="openListMenu(itemType,i)">Opt</button>
+	<div class="list-item__menu" attr.data-list="{{itemType}}-{{i}}">
+		<button 
+			class="list-item__menu__button" 
+			(click)="changeItemStatus(optionType.moveTodo,itemType,i)"
+		>To do</button>
+		<button 
+			class="list-item__menu__button" 
+			(click)="changeItemStatus(optionType.moveInProgress,itemType,i)"
+		>In progress</button>
+		<button 
+			class="list-item__menu__button" 
+			(click)="changeItemStatus(optionType.moveCompleted,itemType,i)"
+		>Completed</button>
+		<button 
+			class="list-item__menu__button" 
+			(click)="changeItemStatus(optionType.deleteItem,itemType,i)"
+		>Delete</button>
+	</div>
+</div>
