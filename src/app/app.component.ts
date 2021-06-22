@@ -71,6 +71,17 @@ export class AppComponent {
           this.inProgressArray.splice(value.index,1);
         }
         break;
+      case 'deleteItem':
+        if(value.itemType == 'todo') {
+          this.todoArray.splice(value.index,1);
+        }
+        else if(value.itemType == 'inProgress') {
+          this.inProgressArray.splice(value.index,1);
+        }
+        else if(value.itemType == 'completed') {
+          this.completedArray.splice(value.index,1);
+        }
+        break;
       default:
         // code block
     }

@@ -1,20 +1,12 @@
 @import '../assets/_variables.scss';
 
-.border-red {
-	border: 2px solid tomato;
-}
-
-.border-blue {
-	border: 2px solid aquamarine;
-}
-
 .wrapper {
 	height: 100vh;
 	padding: 40px;
 	display: grid;
 	grid-template-rows: auto 1fr auto;
 	row-gap: 8px;
-	background-color: $cultured;
+	background-color: $white;
 }
 
 .header {
@@ -34,9 +26,9 @@
 		align-self: flex-start;
 		row-gap: 8px;
 		padding: 16px;
-    background-color: $ghost-white;
-    border-radius: 16px;
-		box-shadow: rgb(50 50 93 / 25%) 0px 6px 12px -2px, rgb(0 0 0 / 30%) 0px 3px 7px -3px;
+		border-radius: 16px;
+		box-shadow: $linen 0px 6px 12px -2px, $linen 0px 3px 7px -3px;
+		border: 1px solid $linen;
 		
 		&__tab {
 			display: grid;
@@ -54,5 +46,11 @@
 
 
 .footer {
+	text-align: center;
+    color: gray;
+    font-size: 14px;
 
+	&__social {
+		color: #4682B4;
+	}
 }

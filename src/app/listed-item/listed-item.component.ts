@@ -20,6 +20,7 @@ export class ListedItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log("list items",this.itemType)
   }
 
   openListMenu(itemType:string,index:number) {

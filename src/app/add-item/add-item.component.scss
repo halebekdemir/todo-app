@@ -7,28 +7,29 @@
 
 	&__input {
 		padding: 8px 4px;
-		border: none;
+		border: 1px ridge $lightBlue;
 		border-radius: 4px;
 
 		&:focus {
-			border: none;
 			outline: none;
 		}
 	}
 
 	&__button {
-			border-radius: 4px;
-			border: none;
-			background-color: $columbia-blue;
-			cursor: pointer;
-			transition: background-color .3s;
+		border-radius: 4px;
+		border: none;
+		background-color:darken($linen,15%);
+		color: white;
+		cursor: pointer;
+		transition: background-color .3s;
 
-			&:hover:enabled {
-				background-color: darken($columbia-blue, 7%);
-			}
+		&:hover:enabled {
+			background-color: darken($lightBlue, 7%);
+		}
 
-			&:disabled {
-				cursor: auto;
-			}
+		&:disabled {
+			background-color: lightgray;
+			cursor: auto;
+		}
 	}
 }
