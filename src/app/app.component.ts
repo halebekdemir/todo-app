@@ -22,9 +22,9 @@ export class AppComponent {
   newComleted:any;
 
   ngOnInit() {
-    this.todoArray = JSON.parse(localStorage.getItem(this.itemType.todo) || '{}');
-    this.inProgressArray = JSON.parse(localStorage.getItem(this.itemType.inProgress) || '{}');
-    this.completedArray = JSON.parse(localStorage.getItem(this.itemType.completed) || '{}');
+    this.todoArray = JSON.parse(localStorage.getItem(this.itemType.todo) || '[]');
+    this.inProgressArray = JSON.parse(localStorage.getItem(this.itemType.inProgress) || '[]');
+    this.completedArray = JSON.parse(localStorage.getItem(this.itemType.completed) || '[]');
   }
 
 
