@@ -92,7 +92,7 @@ export class AppComponent {
           this.deleteTodo(value.index);
         }
         else if(value.itemType == this.itemType.inProgress) {
-          this.addInProgress(this.inProgressArray[value.index]);
+          this.addCompleted(this.inProgressArray[value.index]);
           this.deleteInProgress(value.index);
         }
         break;
