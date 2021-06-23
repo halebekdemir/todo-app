@@ -14,85 +14,101 @@ export class AppComponent {
   }
   
   todoArray:string[] = [];
-
-  inProgressArray:string[] = [
-    "Lorem Ipsum is simply dummy text"
-  ];
+  inProgressArray:string[] = [];
   completedArray:string[] = [];
 
   newTodo:any;
   newInProgress:any;
   newComleted:any;
 
-  deletedIndex:any;
+  ngOnInit() {
+    this.todoArray = JSON.parse(localStorage.getItem(this.itemType.todo) || '{}');
+    this.inProgressArray = JSON.parse(localStorage.getItem(this.itemType.inProgress) || '{}');
+    this.completedArray = JSON.parse(localStorage.getItem(this.itemType.completed) || '{}');
+  }
+
+
+
+  setStorage(arrayName:string,array:any) {
+    localStorage.setItem(arrayName, JSON.stringify(array));
+  }
 
   addTodo(value:string) {
     this.todoArray.push(value);
+    this.setStorage(this.itemType.todo,this.todoArray)
   }
 
-  addDoing(value:string) {
+  deleteTodo(deletedIndex:number) {
+    this.todoArray.splice(deletedIndex,1);
+    this.setStorage(this.itemType.todo,this.todoArray)
+  }
+
+  addInProgress(value:string) {
     this.inProgressArray.push(value);
+    this.setStorage(this.itemType.inProgress,this.inProgressArray)
+  }
+
+  deleteInProgress(deletedIndex:number) {
+    this.inProgressArray.splice(deletedIndex,1);
+    this.setStorage(this.itemType.inProgress,this.inProgressArray)
   }
 
   addCompleted(value:string) {
     this.completedArray.push(value);
+    this.setStorage(this.itemType.completed,this.completedArray)
+  }
+
+  deleteCompleted(deletedIndex:number) {
+    this.completedArray.splice(deletedIndex,1);
+    this.setStorage(this.itemType.completed,this.completedArray)
   }
 
   changeTodoItem(value:{processType:string,itemType:string,index:number}) {
     console.log("change",value);
     switch(value.processType) {
       case 'moveTodo':
-        if(value.itemType == 'inProgress') {
-          this.todoArray.push(this.inProgressArray[value.index]);
-          this.inProgressArray.splice(value.index,1);
+        if(value.itemType == this.itemType.inProgress) {
+          this.addTodo(this.inProgressArray[value.index]);
+          this.deleteInProgress(value.index);
         }
-        else if(value.itemType == 'completed') {
-          this.todoArray.push(this.completedArray[value.index]);
-          this.completedArray.splice(value.index,1);
+        else if(value.itemType == this.itemType.completed) {
+          this.addTodo(this.completedArray[value.index]);
+          this.deleteCompleted(value.index);
         }
         break;
       case 'moveInProgress':
-        if(value.itemType == 'todo') {
-          this.inProgressArray.push(this.todoArray[value.index]);
-          this.todoArray.splice(value.index,1);
+        if(value.itemType == this.itemType.todo) {
+          this.addInProgress(this.todoArray[value.index]);
+          this.deleteTodo(value.index);
         }
-        else if(value.itemType == 'completed') {
-          this.inProgressArray.push(this.completedArray[value.index]);
-          this.completedArray.splice(value.index,1);
+        else if(value.itemType == this.itemType.completed) {
+          this.addInProgress(this.completedArray[value.index]);
+          this.deleteCompleted(value.index);
         }
         break;
       case 'moveCompleted':
-        if(value.itemType == 'todo') {
-          this.completedArray.push(this.todoArray[value.index]);
-          this.todoArray.splice(value.index,1);
+        if(value.itemType == this.itemType.todo) {
+          this.addCompleted(this.todoArray[value.index]);
+          this.deleteTodo(value.index);
         }
-        else if(value.itemType == 'inProgress') {
-          this.inProgressArray.push(this.inProgressArray[value.index]);
-          this.inProgressArray.splice(value.index,1);
+        else if(value.itemType == this.itemType.inProgress) {
+          this.addInProgress(this.inProgressArray[value.index]);
+          this.deleteInProgress(value.index);
         }
         break;
       case 'deleteItem':
-        if(value.itemType == 'todo') {
-          this.todoArray.splice(value.index,1);
+        if(value.itemType == this.itemType.todo) {
+          this.deleteTodo(value.index);
         }
-        else if(value.itemType == 'inProgress') {
-          this.inProgressArray.splice(value.index,1);
+        else if(value.itemType == this.itemType.inProgress) {
+          this.deleteInProgress(value.index);
         }
-        else if(value.itemType == 'completed') {
-          this.completedArray.splice(value.index,1);
+        else if(value.itemType == this.itemType.completed) {
+          this.deleteCompleted(value.index);
         }
         break;
       default:
         // code block
     }
-  }
-
-  deleteDoingItem(value:{index:number,itemType:string,processType:string}) {
-    console.log("completed",value)
-    /* this.inProgressArray.splice(value, 1); */
-  }
-
-  deleteCompletedItem(value:{index:number,itemType:string,processType:string}) {
-    /* this.completedArray.splice(value, 1); */
   }
 }

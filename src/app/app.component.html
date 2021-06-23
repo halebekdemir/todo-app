@@ -14,7 +14,7 @@
     <!-- doing part -->
     <div class="main__part">
       <div class="main__part__tab">In progress</div>
-      <app-add-item (addedItem)="addDoing($event)"></app-add-item>
+      <app-add-item (addedItem)="addInProgress($event)"></app-add-item>
       <div class="main__part__content">
         <app-listed-item [listItems]="inProgressArray" [itemType]="itemType.inProgress" (changedItem)="changeTodoItem($event)"></app-listed-item>
       </div>
